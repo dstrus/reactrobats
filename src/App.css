@@ -16,6 +16,10 @@ li {
   margin-bottom: 0;
 }
 
+.actions button {
+  margin-right: 0 !important;
+}
+
 .acrobat:hover .actions {
   opacity: 1;
 }

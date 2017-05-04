@@ -13,8 +13,14 @@ class Acrobat extends Component {
         
         <span className="actions expanded button-group">
           <button
+            className="edit button"
+            onClick={ev => this.props.editAcrobat(ev, this.props.acrobat)}
+          >
+            <i className="fa fa-pencil"></i>
+          </button>
+          <button
             className="promote warning button"
-            onClick={(ev) => this.props.promoteAcrobat(ev, this.props.acrobat)}
+            onClick={ev => this.props.promoteAcrobat(ev, this.props.acrobat)}
           >
             <i className="fa fa-star"></i>
           </button>

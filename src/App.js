@@ -7,14 +7,30 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      acrobats: {}
+      acrobats: {},
+      acrobat: this.emptyAcrobat(),
     }
   }
   
-  addAcrobat = (acrobat) => {
+  saveAcrobat = (acrobat) => {
     const acrobats = {...this.state.acrobats}
     acrobats[acrobat.id] = acrobat
-    this.setState({ acrobats })
+    this.setState({ acrobats, acrobat: this.emptyAcrobat() })
+  }
+
+  emptyAcrobat = () => {
+    return {
+      id: null,
+      name: '',
+      act: '',
+      className: '',
+    }
+  }
+
+  editAcrobat = (ev, acrobat) => {
+    ev.preventDefault()
+    console.log('edit')
+    this.setState({ acrobat })
   }
 
   promoteAcrobat = (ev, acrobat) => {
@@ -35,11 +51,18 @@ class App extends Component {
         <div className="row">
           <div className="medium-offset-2 medium-8 columns">
             <h2>League of Acrobats</h2>
-            <AcrobatForm addAcrobat={this.addAcrobat} />
+            <AcrobatForm
+              saveAcrobat={this.saveAcrobat}
+              acrobat={this.state.acrobat}
+            />
           </div>
         </div>
 
-        <AcrobatList acrobats={this.state.acrobats} promoteAcrobat={this.promoteAcrobat} />
+        <AcrobatList
+          acrobats={this.state.acrobats}
+          promoteAcrobat={this.promoteAcrobat}
+          editAcrobat={this.editAcrobat}
+        />
       </div>
     );
   }

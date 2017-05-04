@@ -14,6 +14,7 @@ class AcrobatList extends Component {
                     <Acrobat
                       acrobat={this.props.acrobats[id]}
                       promoteAcrobat={this.props.promoteAcrobat}
+                      editAcrobat={this.props.editAcrobat}
                       key={id}
                     />
                   )
