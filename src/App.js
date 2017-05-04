@@ -4,6 +4,10 @@ import './App.css';
 class App extends Component {
   constructor() {
     super()
+    this.acrobat = {
+      name: '',
+      act: '',
+    }
     this.state = {
       acrobats: []
     }
@@ -12,14 +16,18 @@ class App extends Component {
   addAcrobat(ev) {
     ev.preventDefault()
     const acrobats = [...this.state.acrobats]
-    acrobats.push(this.acrobatName.value)
+    const acrobat = {
+      name: this.acrobatName.value,
+      act: this.acrobatAct.value,
+    }
+    acrobats.push(acrobat)
     this.setState({ acrobats })
     this.acrobatForm.reset()
   }
   
   renderAcrobat(acrobat, i) {
     return (
-      <li className="clearfix" key={i}>{acrobat}</li>
+      <li className="clearfix" key={i}>{acrobat.name}, Master of {acrobat.act}</li>
     )
   }
 
@@ -36,6 +44,10 @@ class App extends Component {
               <input 
                 ref={(input) => this.acrobatName = input}
                 type="text" placeholder="Acrobat Name"
+              />
+              <input 
+                ref={(input) => this.acrobatAct = input}
+                type="text" placeholder="Death-Defying Act"
               />
               <button type="submit" className="expanded success button">Sign Me Up</button>
             </form>
