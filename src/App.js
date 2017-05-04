@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import AcrobatList from './AcrobatList.js'
+import AcrobatForm from './AcrobatForm.js'
 
 class App extends Component {
   constructor() {
@@ -10,19 +11,10 @@ class App extends Component {
     }
   }
   
-  addAcrobat(ev) {
-    ev.preventDefault()
+  addAcrobat = (acrobat) => {
     const acrobats = {...this.state.acrobats}
-    const acrobatId = `acrobat-${Date.now()}`;
-    const acrobat = {
-      id: acrobatId,
-      name: this.acrobatName.value,
-      act: this.acrobatAct.value,
-      className: '',
-    }
-    acrobats[acrobatId] = acrobat
+    acrobats[acrobat.id] = acrobat
     this.setState({ acrobats })
-    this.acrobatForm.reset()
   }
 
   promoteAcrobat = (ev, acrobat) => {
@@ -43,20 +35,7 @@ class App extends Component {
         <div className="row">
           <div className="medium-offset-2 medium-8 columns">
             <h2>League of Acrobats</h2>
-            <form 
-              ref={(form) => this.acrobatForm = form}
-              onSubmit={(ev) => this.addAcrobat(ev)}
-            >
-              <input 
-                ref={(input) => this.acrobatName = input}
-                type="text" placeholder="Acrobat Name"
-              />
-              <input 
-                ref={(input) => this.acrobatAct = input}
-                type="text" placeholder="Death-Defying Act"
-              />
-              <button type="submit" className="expanded success button">Sign Me Up</button>
-            </form>
+            <AcrobatForm addAcrobat={this.addAcrobat} />
           </div>
         </div>
 
