@@ -17,9 +17,9 @@ class App extends Component {
     this.acrobatForm.reset()
   }
   
-  renderAcrobat(acrobat) {
+  renderAcrobat(acrobat, i) {
     return (
-      <li className="clearfix">{acrobat}</li>
+      <li className="clearfix" key={i}>{acrobat}</li>
     )
   }
 
