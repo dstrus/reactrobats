@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
-import Acrobat from './Acrobat.js'
+import AcrobatList from './AcrobatList.js'
 
 class App extends Component {
   constructor() {
@@ -60,24 +60,7 @@ class App extends Component {
           </div>
         </div>
 
-        <div className="row">
-          <div className="medium-8 medium-offset-2 columns">
-            <ul className="no-bullet">
-              {
-                Object.keys(this.state.acrobats)
-                  .map((id) => {
-                    return (
-                      <Acrobat
-                        acrobat={this.state.acrobats[id]}
-                        promoteAcrobat={this.promoteAcrobat}
-                        key={id}
-                      />
-                    )
-                  })
-              }
-            </ul>
-          </div>
-        </div>
+        <AcrobatList acrobats={this.state.acrobats} promoteAcrobat={this.promoteAcrobat} />
       </div>
     );
   }
