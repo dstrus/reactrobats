@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import './App.css';
+import Acrobat from './Acrobat.js'
 
 class App extends Component {
   constructor() {
     super()
-    this.acrobat = {
-      name: '',
-      act: '',
-      className: '',
-    }
     this.state = {
       acrobats: {}
     }
@@ -29,7 +25,7 @@ class App extends Component {
     this.acrobatForm.reset()
   }
 
-  promoteAcrobat(ev, acrobat) {
+  promoteAcrobat = (ev, acrobat) => {
     ev.preventDefault();
     const acrobats = {...this.state.acrobats}
     if (acrobat.className === 'promoted') {
@@ -39,25 +35,6 @@ class App extends Component {
     }
     acrobats[acrobat.id] = acrobat
     this.setState({ acrobats })
-  }
-  
-  renderAcrobat = (acrobat) => {
-    return (
-      <li className={`clearfix acrobat ${acrobat.className}`} key={acrobat.id}>
-        <span className="acrobat-name">
-          {acrobat.name}, Master of {acrobat.act}
-        </span>
-        
-        <span className="actions expanded button-group">
-          <button
-             className="promote warning button"
-             onClick={(ev) => this.promoteAcrobat(ev, acrobat)}
-          >
-            <i className="fa fa-star"></i>
-          </button>
-        </span>
-      </li>
-    )
   }
 
   render() {
@@ -88,7 +65,16 @@ class App extends Component {
             <ul className="no-bullet">
               {
                 Object.keys(this.state.acrobats)
-                  .map((id) => this.renderAcrobat(this.state.acrobats[id]))}
+                  .map((id) => {
+                    return (
+                      <Acrobat
+                        acrobat={this.state.acrobats[id]}
+                        promoteAcrobat={this.promoteAcrobat}
+                        key={id}
+                      />
+                    )
+                  })
+              }
             </ul>
           </div>
         </div>
@@ -97,4 +83,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
