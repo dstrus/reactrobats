@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Ewert');
+
+h1, h2 {
+  font-family: 'Ewert', cursive;
+  text-align: center;
+}
+
 li {
   border: 1px solid #ddd;
   padding: .75rem 1.25rem;
