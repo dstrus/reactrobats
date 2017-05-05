@@ -14,6 +14,7 @@ class AcrobatList extends Component {
                 <Acrobat
                   key={id}
                   acrobat={acrobats[id]}
+                  acrobats={this.props.acrobats}
                   saveAcrobat={this.props.saveAcrobat}
                   editAcrobat={this.props.editAcrobat}
                   removeAcrobat={this.props.removeAcrobat}

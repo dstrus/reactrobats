@@ -86,9 +86,8 @@ class App extends Component {
   moveDown = (ev, acrobat) => {
     ev.preventDefault()
     const acrobats = {...this.state.acrobats}
-    const keys = Object.keys(acrobats)
-    if (acrobat.position === keys.length) return // already last
-    for (let otherId of keys) {
+    if (acrobat.position === this.acrobatCount()) return // already last
+    for (let otherId of Object.keys(acrobats)) {
       let otherAcrobat = acrobats[otherId]
       if (otherAcrobat.position === acrobat.position + 1) {
         otherAcrobat.position --
@@ -100,6 +99,10 @@ class App extends Component {
     this.saveAcrobat(acrobat)
   }
 
+  acrobatCount = () => {
+    return Object.keys(this.state.acrobats).length
+  }
+
   render() {
     return (
       <div>
@@ -109,7 +112,7 @@ class App extends Component {
             <AcrobatForm
               saveAcrobat={this.saveAcrobat}
               acrobat={this.state.acrobat}
-              acrobatCount={Object.keys(this.state.acrobats).length}
+              acrobatCount={this.acrobatCount()}
             />
 
             <AcrobatList

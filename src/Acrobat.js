@@ -12,8 +12,25 @@ class Acrobat extends Component {
     return acrobat.promoted ? 'promoted' : ''
   }
 
+  isFirst = () => {
+    return this.props.acrobat.position === 1
+  }
+
+  isLast = () => {
+    return this.props.acrobat.position === Object.keys(this.props.acrobats).length
+  }
+
   render() {
     const acrobat = this.props.acrobat
+    let moveUpProps = {}
+    let moveDownProps = {}
+    if (this.isFirst()) {
+      moveUpProps.disabled = 'disabled'
+    }
+    if (this.isLast()) {
+      moveDownProps.disabled = 'disabled'
+    }
+
     return (
       <li 
         className={`clearfix acrobat ${this.className(acrobat)}`}
@@ -39,12 +56,14 @@ class Acrobat extends Component {
           <button
             className="button"
             onClick={ev => this.props.moveUp(ev, acrobat)}
+            {...moveUpProps}
           >
             <i className="fa fa-arrow-up"></i>
           </button>
           <button
             className="button"
             onClick={ev => this.props.moveDown(ev, acrobat)}
+            {...moveDownProps}
           >
             <i className="fa fa-arrow-down"></i>
           </button>
