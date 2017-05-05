@@ -82,21 +82,21 @@ class App extends Component {
     return (
       <div>
         <div className="row">
-          <div className="medium-offset-2 medium-8 columns">
-            <h1>Circus Royale</h1>
+          <div className="medium-8 medium-offset-2 columns acrobat-list">
+            <h2>Grandest Night <small>of</small> the Season</h2>
             <AcrobatForm
               saveAcrobat={this.saveAcrobat}
               acrobat={this.state.acrobat}
             />
+
+            <AcrobatList
+              acrobats={this.state.acrobats}
+              promoteAcrobat={this.promoteAcrobat}
+              editAcrobat={this.editAcrobat}
+              removeAcrobat={this.removeAcrobat}
+            />
           </div>
         </div>
-
-        <AcrobatList
-          acrobats={this.state.acrobats}
-          promoteAcrobat={this.promoteAcrobat}
-          editAcrobat={this.editAcrobat}
-          removeAcrobat={this.removeAcrobat}
-        />
       </div>
     );
   }
