@@ -1,11 +1,22 @@
 import React, { Component } from 'react'
 
 class Acrobat extends Component {
+  togglePromotion = (ev, acrobat) => {
+    ev.preventDefault()
+    const updatedAcrobat = {...acrobat}
+    updatedAcrobat.promoted = !acrobat.promoted
+    this.props.saveAcrobat(updatedAcrobat)
+  }
+
+  className = (acrobat) => {
+    return acrobat.promoted ? 'promoted' : ''
+  }
+
   render() {
     const acrobat = this.props.acrobat
     return (
       <li 
-        className={`clearfix acrobat ${acrobat.className}`}
+        className={`clearfix acrobat ${this.className(acrobat)}`}
         key={acrobat.id}
       >
         <span className="acrobat-name">
@@ -21,7 +32,7 @@ class Acrobat extends Component {
           </button>
           <button
             className="promote warning button"
-            onClick={ev => this.props.promoteAcrobat(ev, acrobat)}
+            onClick={ev => this.togglePromotion(ev, acrobat)}
           >
             <i className="fa fa-star"></i>
           </button>

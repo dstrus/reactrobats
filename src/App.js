@@ -57,25 +57,13 @@ class App extends Component {
       id: null,
       name: '',
       act: '',
-      className: '',
+      promoted: false,
     }
   }
 
   editAcrobat = (ev, acrobat) => {
     ev.preventDefault()
     this.setState({ acrobat })
-  }
-
-  promoteAcrobat = (ev, acrobat) => {
-    ev.preventDefault();
-    const acrobats = {...this.state.acrobats}
-    if (acrobat.className === 'promoted') {
-      acrobat.className = ''
-    } else {
-      acrobat.className =  'promoted'
-    }
-    acrobats[acrobat.id] = acrobat
-    this.setState({ acrobats })
   }
 
   render() {
@@ -91,7 +79,7 @@ class App extends Component {
 
             <AcrobatList
               acrobats={this.state.acrobats}
-              promoteAcrobat={this.promoteAcrobat}
+              saveAcrobat={this.saveAcrobat}
               editAcrobat={this.editAcrobat}
               removeAcrobat={this.removeAcrobat}
             />
