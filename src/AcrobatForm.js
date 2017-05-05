@@ -50,11 +50,13 @@ class AcrobatForm extends Component {
       >
         <input
           autoFocus
+          required
           ref={(input) => this.acrobatName = input}
           defaultValue={this.props.acrobat.name}
           type="text" placeholder="Acrobat Name"
         />
-        <input 
+        <input
+          required
           ref={(input) => this.acrobatAct = input}
           defaultValue={this.props.acrobat.act}
           type="text" placeholder="Death-Defying Act"
