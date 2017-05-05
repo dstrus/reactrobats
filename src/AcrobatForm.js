@@ -20,6 +20,8 @@ class AcrobatForm extends Component {
     } else {
       this.createAcrobat()
     }
+    this.acrobatForm.reset()
+    this.acrobatName.focus()
   }
 
   updateAcrobat = () => {
@@ -27,7 +29,6 @@ class AcrobatForm extends Component {
     acrobat.name = this.acrobatName.value
     acrobat.act = this.acrobatAct.value
     this.props.saveAcrobat(acrobat)
-    this.acrobatForm.reset()
   }
 
   createAcrobat = () => {
@@ -39,7 +40,6 @@ class AcrobatForm extends Component {
       className: '',
     }
     this.props.saveAcrobat(acrobat)
-    this.acrobatForm.reset()
   }
 
   render() {
@@ -49,6 +49,7 @@ class AcrobatForm extends Component {
         onSubmit={(ev) => this.saveAcrobat(ev)}
       >
         <input
+          autoFocus
           ref={(input) => this.acrobatName = input}
           defaultValue={this.props.acrobat.name}
           type="text" placeholder="Acrobat Name"
