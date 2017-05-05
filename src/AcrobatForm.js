@@ -15,7 +15,7 @@ class AcrobatForm extends Component {
 
   saveAcrobat = (ev) => {
     ev.preventDefault()
-    if (this.props.acrobat.id) {
+    if (this.isExistingAcrobat()) {
       this.updateAcrobat()
     } else {
       this.createAcrobat()
