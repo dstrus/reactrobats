@@ -8,14 +8,7 @@ class AcrobatList extends Component {
 
   render() {
     const acrobats = this.props.acrobats
-    const actions = {
-      acrobats: this.props.acrobats,
-      saveAcrobat: this.props.saveAcrobat,
-      editAcrobat: this.props.editAcrobat,
-      removeAcrobat: this.props.removeAcrobat,
-      moveUp: this.props.moveUp,
-      moveDown: this.props.moveDown,
-    }
+    const actions = {...this.props}
     return (
       <ul className="no-bullet">
         {
