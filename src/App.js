@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css';
 import AcrobatList from './AcrobatList.js'
 import AcrobatForm from './AcrobatForm.js'
+import base from './base'
 
 class App extends Component {
   constructor() {
@@ -13,7 +14,15 @@ class App extends Component {
   }
 
   componentWillMount() {
-    const acrobatsRef = localStorage.getItem('acrobats');
+    this.ref = base.syncState(
+      'acrobats',
+      {
+        context: this,
+        state: 'acrobats',
+      }
+    )
+
+    const acrobatsRef = localStorage.getItem('acrobats')
 
     if (acrobatsRef) {
       this.setState({
@@ -23,7 +32,11 @@ class App extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    localStorage.setItem('acrobats', JSON.stringify(nextState.acrobats));
+    localStorage.setItem('acrobats', JSON.stringify(nextState.acrobats))
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref)
   }
   
   saveAcrobat = (acrobat) => {
@@ -35,7 +48,7 @@ class App extends Component {
   removeAcrobat = (ev, acrobat) => {
     ev.preventDefault()
     const acrobats = {...this.state.acrobats}
-    delete acrobats[acrobat.id]
+    acrobats[acrobat.id] = null
     this.setState({ acrobats })
   }
 

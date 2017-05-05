@@ -1,0 +1,10 @@
+import Rebase from 're-base'
+
+export default Rebase.createClass({
+  apiKey: "YOUR-KEY",
+  authDomain: "YOUR-APP.firebaseapp.com",
+  databaseURL: "https://YOUR-APP.firebaseio.com",
+  projectId: "YOUR-APP",
+  storageBucket: "YOUR-BUCKET.appspot.com",
+  messagingSenderId: "YOUR-SENDER-ID"
+})
