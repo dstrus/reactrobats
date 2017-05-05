@@ -18,6 +18,13 @@ class App extends Component {
     this.setState({ acrobats, acrobat: this.emptyAcrobat() })
   }
 
+  removeAcrobat = (ev, acrobat) => {
+    ev.preventDefault()
+    const acrobats = {...this.state.acrobats}
+    delete acrobats[acrobat.id]
+    this.setState({ acrobats })
+  }
+
   emptyAcrobat = () => {
     return {
       id: null,
@@ -29,7 +36,6 @@ class App extends Component {
 
   editAcrobat = (ev, acrobat) => {
     ev.preventDefault()
-    console.log('edit')
     this.setState({ acrobat })
   }
 
@@ -62,6 +68,7 @@ class App extends Component {
           acrobats={this.state.acrobats}
           promoteAcrobat={this.promoteAcrobat}
           editAcrobat={this.editAcrobat}
+          removeAcrobat={this.removeAcrobat}
         />
       </div>
     );

@@ -24,6 +24,12 @@ class Acrobat extends Component {
           >
             <i className="fa fa-star"></i>
           </button>
+          <button
+            className="remove alert button"
+            onClick={ev => this.props.removeAcrobat(ev, this.props.acrobat)}
+          >
+            <i className="fa fa-trash-o"></i>
+          </button>
         </span>
       </li>
     )
