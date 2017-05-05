@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
 class AcrobatForm extends Component {
+  componentDidMount() {
+    this.acrobatForm.reset()
+  }
+
   isExistingAcrobat = () => {
     return this.props.acrobat.id && true
   }
