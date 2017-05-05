@@ -1,19 +1,59 @@
-@import url('https://fonts.googleapis.com/css?family=Ewert');
+@import url('https://fonts.googleapis.com/css?family=Ewert|Oswald|Vast+Shadow');
 
-h1, h2 {
-  font-family: 'Ewert', cursive;
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  background-image: linear-gradient(#c99b5d, #e1bd89 20%, #e1bd89 80%, #c99b5d 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  color: rgba(0,0,0,0.6);
   text-align: center;
 }
 
+h1 {
+  font-family: 'Ewert', cursive;
+}
+
+h2 {
+  font-family: 'Vast Shadow', cursive;
+  text-transform: uppercase;
+}
+
+h2 small {
+  color: rgba(0,0,0,0.4);
+  font-family: Oswald, sans-serif;
+  font-size: 50%;
+}
+
+[type=text] {
+  background-color: rgba(255,255,255,0.6);
+  border-color: rgba(202,202,202,0.6);
+}
+
+.button.success {
+  background-color: #9BC1BC;
+  font-family: Oswald, sans-serif;
+  text-transform: uppercase;
+}
+
+.acrobat-list {
+  border: 8px double;
+}
+
 li {
-  border: 1px solid #ddd;
+  border: 1px solid #666;
   padding: .75rem 1.25rem;
   margin-bottom: -1px;
 }
 
 .promoted {
   background-color: #FFC656;
-  border-color: #FFA807;
 }
 
 .actions {

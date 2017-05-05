@@ -5,8 +5,8 @@ class AcrobatList extends Component {
   render() {
     return (
       <div className="row">
-        <div className="medium-8 medium-offset-2 columns">
-          <h2>Tonight's Acts</h2>
+        <div className="medium-8 medium-offset-2 columns acrobat-list">
+          <h2>Grandest Night <small>of</small> the Season</h2>
           <ul className="no-bullet">
             {
               Object.keys(this.props.acrobats)

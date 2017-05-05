@@ -83,7 +83,7 @@ class App extends Component {
       <div>
         <div className="row">
           <div className="medium-offset-2 medium-8 columns">
-            <h1>League of Acrobats</h1>
+            <h1>Circus Royale</h1>
             <AcrobatForm
               saveAcrobat={this.saveAcrobat}
               acrobat={this.state.acrobat}
