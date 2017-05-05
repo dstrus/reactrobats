@@ -11,6 +11,20 @@ class App extends Component {
       acrobat: this.emptyAcrobat(),
     }
   }
+
+  componentWillMount() {
+    const acrobatsRef = localStorage.getItem('acrobats');
+
+    if (acrobatsRef) {
+      this.setState({
+        acrobats: JSON.parse(acrobatsRef)
+      })
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('acrobats', JSON.stringify(nextState.acrobats));
+  }
   
   saveAcrobat = (acrobat) => {
     const acrobats = {...this.state.acrobats}
