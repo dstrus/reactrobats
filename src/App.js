@@ -69,6 +69,7 @@ class App extends Component {
 
   moveUp = (ev, acrobat) => {
     ev.preventDefault()
+    if (acrobat.position === 1) return // already first
     const acrobats = {...this.state.acrobats}
     for (let otherId of Object.keys(acrobats)) {
       let otherAcrobat = acrobats[otherId]
@@ -85,7 +86,9 @@ class App extends Component {
   moveDown = (ev, acrobat) => {
     ev.preventDefault()
     const acrobats = {...this.state.acrobats}
-    for (let otherId of Object.keys(acrobats)) {
+    const keys = Object.keys(acrobats)
+    if (acrobat.position === keys.length) return // already last
+    for (let otherId of keys) {
       let otherAcrobat = acrobats[otherId]
       if (otherAcrobat.position === acrobat.position + 1) {
         otherAcrobat.position --
