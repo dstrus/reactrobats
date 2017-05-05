@@ -12,11 +12,13 @@ class AcrobatList extends Component {
             .map((id) => {
               return (
                 <Acrobat
+                  key={id}
                   acrobat={acrobats[id]}
                   saveAcrobat={this.props.saveAcrobat}
                   editAcrobat={this.props.editAcrobat}
                   removeAcrobat={this.props.removeAcrobat}
-                  key={id}
+                  moveUp={this.props.moveUp}
+                  moveDown={this.props.moveDown}
                 />
               )
             })

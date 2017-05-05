@@ -67,6 +67,36 @@ class App extends Component {
     this.setState({ acrobat })
   }
 
+  moveUp = (ev, acrobat) => {
+    ev.preventDefault()
+    const acrobats = {...this.state.acrobats}
+    for (let otherId of Object.keys(acrobats)) {
+      let otherAcrobat = acrobats[otherId]
+      if (otherAcrobat.position === acrobat.position - 1) {
+        otherAcrobat.position ++
+        this.saveAcrobat(otherAcrobat)
+        break
+      }
+    }
+    acrobat.position --
+    this.saveAcrobat(acrobat)
+  }
+
+  moveDown = (ev, acrobat) => {
+    ev.preventDefault()
+    const acrobats = {...this.state.acrobats}
+    for (let otherId of Object.keys(acrobats)) {
+      let otherAcrobat = acrobats[otherId]
+      if (otherAcrobat.position === acrobat.position + 1) {
+        otherAcrobat.position --
+        this.saveAcrobat(otherAcrobat)
+        break
+      }
+    }
+    acrobat.position ++
+    this.saveAcrobat(acrobat)
+  }
+
   render() {
     return (
       <div>
@@ -84,6 +114,8 @@ class App extends Component {
               saveAcrobat={this.saveAcrobat}
               editAcrobat={this.editAcrobat}
               removeAcrobat={this.removeAcrobat}
+              moveUp={this.moveUp}
+              moveDown={this.moveDown}
             />
           </div>
         </div>

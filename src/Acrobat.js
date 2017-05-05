@@ -37,6 +37,18 @@ class Acrobat extends Component {
             <i className="fa fa-star"></i>
           </button>
           <button
+            className="button"
+            onClick={ev => this.props.moveUp(ev, acrobat)}
+          >
+            <i className="fa fa-arrow-up"></i>
+          </button>
+          <button
+            className="button"
+            onClick={ev => this.props.moveDown(ev, acrobat)}
+          >
+            <i className="fa fa-arrow-down"></i>
+          </button>
+          <button
             className="remove alert button"
             onClick={ev => this.props.removeAcrobat(ev, acrobat)}
           >
