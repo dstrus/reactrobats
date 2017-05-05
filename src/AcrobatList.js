@@ -3,14 +3,16 @@ import Acrobat from './Acrobat.js'
 
 class AcrobatList extends Component {
   render() {
+    const acrobats = this.props.acrobats
     return (
       <ul className="no-bullet">
         {
-          Object.keys(this.props.acrobats)
+          Object.keys(acrobats)
+            .sort((a, b) => acrobats[a].position - acrobats[b].position)
             .map((id) => {
               return (
                 <Acrobat
-                  acrobat={this.props.acrobats[id]}
+                  acrobat={acrobats[id]}
                   saveAcrobat={this.props.saveAcrobat}
                   editAcrobat={this.props.editAcrobat}
                   removeAcrobat={this.props.removeAcrobat}

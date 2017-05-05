@@ -58,6 +58,7 @@ class App extends Component {
       name: '',
       act: '',
       promoted: false,
+      position: 0,
     }
   }
 
@@ -75,6 +76,7 @@ class App extends Component {
             <AcrobatForm
               saveAcrobat={this.saveAcrobat}
               acrobat={this.state.acrobat}
+              acrobatCount={Object.keys(this.state.acrobats).length}
             />
 
             <AcrobatList

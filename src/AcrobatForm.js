@@ -33,11 +33,13 @@ class AcrobatForm extends Component {
 
   createAcrobat = () => {
     const acrobatId = `acrobat-${Date.now()}`;
+    const position = this.props.acrobatCount + 1
     const acrobat = {
       id: acrobatId,
       name: this.acrobatName.value,
       act: this.acrobatAct.value,
-      className: '',
+      promoted: false,
+      position,
     }
     this.props.saveAcrobat(acrobat)
   }
