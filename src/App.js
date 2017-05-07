@@ -71,14 +71,12 @@ class App extends Component {
     ev.preventDefault()
     if (acrobat.position === 1) return // already first
     const acrobats = {...this.state.acrobats}
-    for (let otherId of Object.keys(acrobats)) {
-      let otherAcrobat = acrobats[otherId]
-      if (otherAcrobat.position === acrobat.position - 1) {
-        otherAcrobat.position ++
-        this.saveAcrobat(otherAcrobat)
-        break
-      }
-    }
+    const otherId = Object.keys(acrobats).find(key => {
+      return acrobats[key].position === acrobat.position - 1
+    })
+    const otherAcrobat = acrobats[otherId]
+    otherAcrobat.position ++
+    this.saveAcrobat(otherAcrobat)
     acrobat.position --
     this.saveAcrobat(acrobat)
   }
@@ -87,14 +85,12 @@ class App extends Component {
     ev.preventDefault()
     const acrobats = {...this.state.acrobats}
     if (acrobat.position === this.acrobatCount()) return // already last
-    for (let otherId of Object.keys(acrobats)) {
-      let otherAcrobat = acrobats[otherId]
-      if (otherAcrobat.position === acrobat.position + 1) {
-        otherAcrobat.position --
-        this.saveAcrobat(otherAcrobat)
-        break
-      }
-    }
+    const otherId = Object.keys(acrobats).find(key => {
+      return acrobats[key].position === acrobat.position + 1
+    })
+    const otherAcrobat = acrobats[otherId]
+    otherAcrobat.position --
+    this.saveAcrobat(otherAcrobat)
     acrobat.position ++
     this.saveAcrobat(acrobat)
   }
