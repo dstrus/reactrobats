@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       acrobats: {},
       acrobat: this.emptyAcrobat(),
+      mostRecentlyMoved: null,
     }
   }
 
@@ -79,6 +80,9 @@ class App extends Component {
     this.saveAcrobat(otherAcrobat)
     acrobat.position --
     this.saveAcrobat(acrobat)
+    this.setState({ mostRecentlyMoved: acrobat.id })
+    setTimeout(() => this.setState({ mostRecentlyMoved: null }), 500)
+    
   }
 
   moveDown = (ev, acrobat) => {
@@ -93,6 +97,8 @@ class App extends Component {
     this.saveAcrobat(otherAcrobat)
     acrobat.position ++
     this.saveAcrobat(acrobat)
+    this.setState({ mostRecentlyMoved: acrobat.id })
+    setTimeout(() => this.setState({ mostRecentlyMoved: null }), 500)
   }
 
   acrobatCount = () => {
@@ -118,6 +124,7 @@ class App extends Component {
               removeAcrobat={this.removeAcrobat}
               moveUp={this.moveUp}
               moveDown={this.moveDown}
+              mostRecentlyMoved={this.state.mostRecentlyMoved}
             />
           </div>
         </div>

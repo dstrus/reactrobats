@@ -14,7 +14,7 @@ class AcrobatList extends Component {
         {
           Object.keys(acrobats)
             .sort(this.sortAcrobats)
-            .map(id => <Acrobat key={id} acrobat={acrobats[id]} {...actions} />)
+            .map(id => <Acrobat key={id} acrobat={acrobats[id]} {...actions} mostRecentlyMoved={this.props.mostRecentlyMoved} />)
         }
       </ul>
     )

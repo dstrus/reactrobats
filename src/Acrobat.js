@@ -9,7 +9,14 @@ class Acrobat extends Component {
   }
 
   className = (acrobat) => {
-    return acrobat.promoted ? 'promoted' : ''
+    let classNames = []
+    if (acrobat.promoted) {
+      classNames.push('promoted')
+    }
+    if (this.props.mostRecentlyMoved === acrobat.id) {
+      classNames.push('highlight')
+    }
+    return classNames.join(' ')
   }
 
   isFirst = () => {
